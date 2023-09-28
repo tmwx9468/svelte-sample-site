@@ -2,7 +2,7 @@ import adapter from '@sveltejs/adapter-static';
 import { vitePreprocess } from '@sveltejs/kit/vite';
 
 
-const dev = "production" === "development";
+const dev = process.argv.includes('dev');
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -20,7 +20,7 @@ const config = {
         }),
         paths: {
             // change below to your repo name
-            base: dev ? "" : "/svelte-sample-site",
+            base: dev ? "" : process.env.BASE_PATH,
         },
 	}
 };
